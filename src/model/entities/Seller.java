@@ -1,13 +1,13 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Objects;
+import java.sql.Date;
 
-public class Seller implements Serializable{
-	
+
+public class Seller implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String name;
 	private String email;
@@ -16,7 +16,8 @@ public class Seller implements Serializable{
 	
 	private Department department;
 	
-	public Seller() {}
+	public Seller() {
+	}
 
 	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
 		this.id = id;
@@ -24,7 +25,8 @@ public class Seller implements Serializable{
 		this.email = email;
 		this.birthDate = birthDate;
 		this.baseSalary = baseSalary;
-		this.department = department;}
+		this.department = department;
+	}
 
 	public Integer getId() {
 		return id;
@@ -76,7 +78,10 @@ public class Seller implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -88,7 +93,12 @@ public class Seller implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Seller other = (Seller) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 	@Override
@@ -96,7 +106,4 @@ public class Seller implements Serializable{
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
 				+ baseSalary + ", department=" + department + "]";
 	}
-	
-	
-	
 }

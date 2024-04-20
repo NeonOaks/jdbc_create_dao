@@ -24,7 +24,5 @@ public class Program {
 		for(Seller obj : list) {
 			System.out.println(obj);
 		}
-
 	}
-
 }
